@@ -2,46 +2,154 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SupportChat from "../components/SupportChat.astro";
-const {title="Trade Avata — Trade Simple.", description="Trade is simple when you have the right tool."} = Astro.props;
-const base = import.meta.env.BASE_URL;
+import "../styles/site.css";
+
+const {
+  title = "Trade Avata — Trade Simple.",
+  description = "Trade is simple when you have the right tool."
+} = Astro.props;
+
+const rawBase = import.meta.env.BASE_URL || "/";
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
+
 <!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content={description} />
-  <title>{title}</title>
-  <link rel="icon" href={`${base}brand/trade-avata-logo.svg`} />
-  <script is:inline>
-    try{document.documentElement.dataset.theme=localStorage.getItem("ta-theme")==="dark"?"dark":"light"}catch{}
-  </script>
-</head>
-<body data-base-url={base}>
-  <Header />
-  <main><slot /></main>
-  <Footer />
-  <SupportChat />
-  <script is:inline>
-    window.TA={base:document.body.dataset.baseUrl||"/"};
-    function applyTATheme(){
-      const light=document.documentElement.dataset.theme==="light";
-      document.querySelectorAll("[data-theme-toggle]").forEach(b=>{
-        b.setAttribute("aria-pressed",String(light));
-        b.setAttribute("title",light?"Switch to dark theme":"Switch to light theme");
-        b.textContent=light?"☾":"☼";
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <title>{title}</title>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={`${base}brand/trade-avata-logo.svg`}
+    />
+
+    <script is:inline>
+      try {
+        const savedTheme = localStorage.getItem("ta-theme");
+
+        document.documentElement.dataset.theme =
+          savedTheme === "dark" ? "dark" : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+  </head>
+
+  <body data-base-url={base}>
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <SupportChat />
+
+    <script is:inline>
+      const base =
+        document.body.dataset.baseUrl ||
+        "/JESUS/";
+
+      window.TA = {
+        base
+      };
+
+      function applyTheme() {
+        const currentTheme =
+          document.documentElement.dataset.theme || "light";
+
+        const isDark = currentTheme === "dark";
+
+        document
+          .querySelectorAll("[data-theme-toggle]")
+          .forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(isDark)
+            );
+
+            button.setAttribute(
+              "title",
+              isDark
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            );
+
+            button.textContent =
+              isDark ? "☀" : "☾";
+          });
+
+        document
+          .querySelectorAll("[data-brand-logo]")
+          .forEach((image) => {
+            image.src = `${base}brand/trade-avata-logo${
+              isDark ? "" : "-light"
+            }.svg`;
+          });
+      }
+
+      applyTheme();
+
+      document.addEventListener("click", (event) => {
+        const themeButton =
+          event.target.closest("[data-theme-toggle]");
+
+        if (themeButton) {
+          const currentTheme =
+            document.documentElement.dataset.theme;
+
+          const nextTheme =
+            currentTheme === "dark"
+              ? "light"
+              : "dark";
+
+          document.documentElement.dataset.theme =
+            nextTheme;
+
+          try {
+            localStorage.setItem(
+              "ta-theme",
+              nextTheme
+            );
+          } catch {}
+
+          applyTheme();
+        }
+
+        const menuButton =
+          event.target.closest("[data-menu-toggle]");
+
+        if (menuButton) {
+          const mobileNav =
+            document.querySelector("[data-mobile-nav]");
+
+          if (!mobileNav) return;
+
+          const isOpen =
+            mobileNav.classList.toggle("open");
+
+          mobileNav.hidden = !isOpen;
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+          );
+        }
       });
-      document.querySelectorAll("[data-brand-logo]").forEach(img=>{
-        img.src=`${window.TA.base}brand/trade-avata-logo${light?"-light":""}.svg`;
-      });
-    }
-    applyTATheme();
-    document.addEventListener("click",e=>{
-      const t=e.target.closest("[data-theme-toggle]");
-      if(t){const next=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=next;try{localStorage.setItem("ta-theme",next)}catch{}applyTATheme();}
-      const m=e.target.closest("[data-menu-toggle]");
-      if(m){document.querySelector("[data-mobile-nav]")?.classList.toggle("open");}
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
