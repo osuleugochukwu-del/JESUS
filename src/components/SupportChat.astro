@@ -1,0 +1,18 @@
+<button class="support-launcher" data-support-open>💬 <span>Chat with us</span></button>
+<div class="support-panel" data-support-panel hidden>
+  <div class="support-head"><div><b>Trade Avata Support</b><small>We’re here to help</small></div><button data-support-close>×</button></div>
+  <div class="support-body" data-support-body><p class="support-empty">Hi 👋 Tell us what you need help with.</p></div>
+  <form class="support-form" data-support-form><input name="message" placeholder="Type your message…" required /><button>➤</button></form>
+  <small class="support-note">Demo support chat. Never send passwords or API keys.</small>
+</div>
+<script is:inline>
+  const sp=document.querySelector("[data-support-panel]"), sb=document.querySelector("[data-support-body]");
+  document.querySelector("[data-support-open]")?.addEventListener("click",()=>sp.hidden=false);
+  document.querySelector("[data-support-close]")?.addEventListener("click",()=>sp.hidden=true);
+  document.querySelector("[data-support-form]")?.addEventListener("submit",e=>{
+    e.preventDefault(); const i=e.currentTarget.message, m=i.value.trim(); if(!m)return;
+    if(sb.querySelector(".support-empty"))sb.innerHTML="";
+    const el=document.createElement("div");el.className="support-msg visitor";el.textContent=m;sb.appendChild(el);
+    i.value=""; setTimeout(()=>{const a=document.createElement("div");a.className="support-msg admin";a.textContent="Thanks — your message has been received in this demo workspace. A real support inbox will be connected when the backend is enabled.";sb.appendChild(a);sb.scrollTop=sb.scrollHeight},450);
+  });
+</script>

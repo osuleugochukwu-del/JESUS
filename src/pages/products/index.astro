@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {indicators} from "../../data/site.js";
+const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="Indicators — Trade Avata">
+<section class="page"><div class="shell"><span class="eyebrow">Trade Avata Store</span><h1 class="page-title">Premium &amp; Free Indicators</h1><p class="lead">Browse trading indicators for MT4, MT5, cTrader and TradingView. Use the platform filters to narrow the catalog.</p>
+<div class="filters" style="justify-content:flex-start;margin-top:24px"><button class="filter active" data-filter="All">All</button><button class="filter" data-filter="MT4">MT4</button><button class="filter" data-filter="MT5">MT5</button><button class="filter" data-filter="cTrader">cTrader</button><button class="filter" data-filter="TradingView">TradingView</button></div>
+<div class="grid grid-4" id="catalog">{indicators.map(p=><article class="card product-card" data-platforms={p.platforms.join("|")}><div class="product-image"><span>{p.price==="Free"?"FREE":"POPULAR"}</span></div><div class="card-body"><h3>{p.name}</h3><div class="product-meta"><span>{p.platforms.join(" · ")}</span><span class="stars">★ {p.rating} ({p.reviews})</span></div><p>{p.description}</p><div class="card-actions"><b class="price">{p.price}</b><a class="link" href={`${base}products/${p.slug}/`}>View Details →</a></div></div></article>)}</div></div></section>
+<script>
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));const f=b.dataset.filter;document.querySelectorAll("#catalog .product-card").forEach(c=>c.style.display=f==="All"||c.dataset.platforms.split("|").includes(f)?"":"none")}));
+</script>
+</BaseLayout>

@@ -1,0 +1,5 @@
+{
+  "siteSettings/homepage": {"public": true, "hero": {"primaryLabel":"string","primaryUrl":"string","secondaryLabel":"string","secondaryUrl":"string"}, "ai":{"analytics":{"url":"string"},"journal":{"url":"string"}}, "cta":{"title":"string","description":"string","image":"string","url":"string"}},
+  "homepageIndicators/{indicatorId}": {"public":true,"name":"string","platform":"MetaTrader 4 | MetaTrader 5 | cTrader | TradingView","access":"string","image":"string","url":"string","rating":"string","reviews":"string","order":0},
+  "adSlots/slot_homepage": {"placement":"homepage","provider":"custom | adsense","enabled":false,"headline":"string","description":"string","buttonLabel":"string","linkUrl":"string","backgroundImage":"string","format":"full-width-banner"}
+}

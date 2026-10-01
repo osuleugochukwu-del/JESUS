@@ -1,0 +1,20 @@
+TRADE AVATA — COMPLETE FINAL PACKAGE
+
+This package contains the complete frontend project plus the backend/Firebase architecture folders.
+
+UPLOAD:
+1. Extract this ZIP.
+2. Open TRADE_AVATA_COMPLETE_FINAL.
+3. Upload the CONTENTS of this folder to the root of NEW-SITE-TRADE-AVATA on GitHub.
+4. Do not upload the outer folder as an extra nesting level.
+5. Keep GitHub Pages set to GitHub Actions.
+6. Do not connect the custom domain yet.
+
+IMPORTANT:
+- Existing advanced AI Analytics is retained.
+- Existing AI Journal is retained.
+- Member and Admin areas are retained.
+- The new homepage design is merged.
+- Homepage advertising is controlled through Admin -> Advertising Manager when Firebase is connected.
+- Firebase is not live until the project's credentials/services are configured.
+- Never put production secrets into GitHub.

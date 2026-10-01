@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {indicators} from "../../data/site.js";
+export function getStaticPaths(){return indicators.map(p=>({params:{slug:p.slug},props:{p}}))}
+const {p}=Astro.props; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title={`${p.name} — Trade Avata`}>
+<section class="page"><div class="shell">
+<a class="link" href={`${base}products/`}>← Back to indicators</a>
+<div class="split" style="margin-top:18px"><div class="card" style="padding:0"><div class="product-image" style="height:430px"></div></div><div class="card" style="padding:28px"><span class="eyebrow">{p.price==="Free"?"Free":"Premium"}</span><h1 class="page-title" style="font-size:48px">{p.name}</h1><p class="lead">{p.description}</p><div class="stars">★★★★★ <span style="color:var(--muted)"> {p.rating} · {p.reviews} reviews</span></div><p style="margin-top:20px"><b>Supported platforms</b></p><div class="filters" style="justify-content:flex-start">{p.platforms.map(x=><span class="chip">{x}</span>)}</div><h2>{p.price}</h2><a class="button" href={`${base}login/`}>{p.price==="Free"?"Get Started Free":"Get Indicator"} →</a></div></div>
+<div class="section" style="padding-bottom:0"><div class="section-head"><span class="eyebrow">Product Details</span><h2>Built for a clearer trading process</h2></div><div class="grid grid-3"><article class="card card-body"><h3>Visual signals</h3><p>Designed to keep the important chart information visible without unnecessary clutter.</p></article><article class="card card-body"><h3>Platform ready</h3><p>Platform availability is shown directly on the product so there is less guesswork.</p></article><article class="card card-body"><h3>Configurable</h3><p>Product-specific settings and requirements can be managed from the product detail page.</p></article></div></div>
+</div></section>
+</BaseLayout>

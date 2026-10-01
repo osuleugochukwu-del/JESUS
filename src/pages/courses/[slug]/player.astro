@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {courses} from "../../../data/site.js";
+export function getStaticPaths(){return courses.map(c=>({params:{slug:c.slug},props:{c}}))}
+const {c}=Astro.props; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title={`${c.title} Player — Trade Avata`}>
+<section class="dark-surface"><div class="shell page"><a class="link" href={`${base}courses/${c.slug}/`} style="color:#63baff">← Course overview</a><div class="two-col" style="margin-top:15px"><aside class="sidebar-card" style="background:#0b1d2d;border-color:#23455e;color:#eef6ff"><b>{c.title}</b><p class="muted" style="font-size:11px">{c.lessons} lessons · {c.duration}</p>{Array.from({length:Math.min(8,c.lessons)}).map((_,i)=><button>Lesson {i+1}<span style="float:right;color:#4be29c">{i<2?"✓":""}</span></button>)}</aside><div><div class="chart" style="height:480px;border-radius:16px"><div class="chart-grid"></div><div class="chart-line"></div><span class="preview-label">Course Video</span></div><div class="panel" style="margin-top:14px;background:#0b1d2d;border-color:#23455e"><span class="eyebrow">Lesson 1</span><h1>{c.title}: Getting Started</h1><p class="muted">Video, transcript, notes and resources can be connected here when course content is uploaded from the admin.</p><div style="display:flex;justify-content:space-between;gap:10px"><button class="button">← Previous</button><button class="button">Next Lesson →</button></div></div></div></div></div></section>
+</BaseLayout>

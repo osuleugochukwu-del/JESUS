@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {courses} from "../../data/site.js";
+export function getStaticPaths(){return courses.map(c=>({params:{slug:c.slug},props:{c}}))}
+const {c}=Astro.props; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title={`${c.title} — Trade Avata`}>
+<section class="page"><div class="shell"><a class="link" href={`${base}courses/`}>← Back to courses</a><div class="split" style="margin-top:18px"><div class="card"><div class="course-image" style="height:360px"></div><div class="card-body"><span class="chip">{c.level}</span><h1 class="page-title" style="font-size:46px">{c.title}</h1><p class="lead">{c.description}</p><a class="button" href={`${base}courses/${c.slug}/player/`}>Start Course →</a></div></div><div class="card card-body"><span class="eyebrow">Course Overview</span><h2>What you will learn</h2><p class="muted">A structured learning path with practical lessons, examples and review points.</p><div class="grid" style="margin-top:15px">{Array.from({length:Math.min(6,c.lessons)}).map((_,i)=><div style="padding:11px;border:1px solid var(--line);border-radius:10px"><b>Lesson {i+1}</b><span class="muted"> · {["Foundations","Market structure","Risk","Setups","Execution","Review"][i]||"Practice"}</span></div>)}</div></div></div></div></section>
+</BaseLayout>

@@ -1,0 +1,4 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="Tools — Trade Avata"><section class="page"><div class="shell"><span class="eyebrow">Tools</span><h1 class="page-title">Two core tools. No clutter.</h1><p class="lead">We removed the calculators and kept the tools that belong at the center of the Trade Avata workflow.</p><div class="grid grid-2" style="margin-top:28px"><a class="card card-body card-link" href={`${base}analytics/`}><div class="icon">AI</div><h3>AI Analytics</h3><p>Analyze performance, risk, trades and historical comparisons.</p></a><a class="card card-body card-link" href={`${base}journal/`}><div class="icon">J</div><h3>AI Journal</h3><p>Record trades, notes, lessons and review patterns.</p></a></div></div></section></BaseLayout>

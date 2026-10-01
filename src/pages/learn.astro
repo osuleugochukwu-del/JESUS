@@ -1,0 +1,4 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="Learn — Trade Avata"><section class="page"><div class="shell"><span class="eyebrow">Learn</span><h1 class="page-title">Build a better trading process.</h1><p class="lead">Courses, lessons and practical resources designed to make learning easier to apply.</p><div class="grid grid-3" style="margin-top:28px"><a class="card card-body card-link" href={`${base}courses/`}><h3>Courses</h3><p>Start with structured trading education.</p></a><a class="card card-body card-link" href={`${base}journal/`}><h3>AI Journal</h3><p>Learn from your own recorded trades.</p></a><a class="card card-body card-link" href={`${base}analytics/`}><h3>AI Analytics</h3><p>Turn your trading history into evidence.</p></a></div></div></section></BaseLayout>

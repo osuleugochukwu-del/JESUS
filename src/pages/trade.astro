@@ -1,0 +1,4 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"; const base=import.meta.env.BASE_URL;
+---
+<BaseLayout title="Trade — Trade Avata"><section class="page"><div class="shell"><span class="eyebrow">Trade</span><h1 class="page-title">Tools for a clearer trading workflow.</h1><p class="lead">Connect the parts of your process: analyze, journal, review and discover indicators.</p><div class="grid grid-3" style="margin-top:28px"><a class="card card-body card-link" href={`${base}analytics/`}><h3>AI Analytics</h3><p>Performance, risk, comparisons and evidence.</p></a><a class="card card-body card-link" href={`${base}products/`}><h3>Indicators</h3><p>Browse tools for your platform.</p></a><a class="card card-body card-link" href={`${base}journal/`}><h3>Journal</h3><p>Record and review your trades.</p></a></div></div></section></BaseLayout>
