@@ -1,7 +1,374 @@
 ---
-const base=import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL || "/";
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+const year = new Date().getFullYear();
 ---
-<footer class="site-footer"><div class="shell footer-top"><div class="footer-brand-col"><a class="footer-brand" href={base}><img src={`${base}brand/trade-avata-logo-light.svg`} alt="Trade Avata"/><span>TRADE AVATA<small>TRADE SIMPLE.</small></span></a><p>Trading tools, AI analytics, indicators and practical learning in one workspace.</p><div class="footer-socials"><a href="#">𝕏</a><a href="#">f</a><a href="#">▶</a><a href="#">◎</a><a href="#">in</a></div></div><div><h2>Quick Links</h2><a href={base}>Home</a><a href={`${base}analytics/`}>Analytics</a><a href={`${base}journal/`}>Journal</a><a href={`${base}products/`}>Indicators</a></div><div><h2>Resources</h2><a href={`${base}learn/`}>Courses</a><a href={`${base}store/`}>Store</a><a href={`${base}tools/`}>Tools</a><a href={`${base}market/`}>Market</a></div><div><h2>Support</h2><a href={`${base}contact/`}>Contact</a><a href={`${base}member/`}>Member Area</a><a href={`${base}contact/`}>Help Centre</a><a href={`${base}legal/risk-disclosure/`}>Risk Disclosure</a></div><div><h2>Company</h2><a href={`${base}about/`}>About Us</a><a href={`${base}contact/`}>Contact</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div><div class="footer-stay"><h2>Stay Connected</h2><p>Get updates, new indicators and course releases.</p><form onsubmit="return false"><input type="email" placeholder="Enter your email address"/><button>→</button></form></div></div><div class="shell footer-bottom"><span>© {new Date().getFullYear()} Trade Avata. All rights reserved.</span><span>Trade Simple.</span></div></footer>
+
+<footer class="site-footer">
+  <div class="shell footer-top">
+
+    <div class="footer-brand-col">
+      <a
+        class="footer-brand"
+        href={base}
+        aria-label="Trade Avata home"
+      >
+        <img
+          src={`${base}brand/trade-avata-logo-light.svg`}
+          alt="Trade Avata"
+        />
+
+        <span>
+          TRADE AVATA
+          <small>TRADE SIMPLE.</small>
+        </span>
+      </a>
+
+      <p>
+        Trading tools, AI analytics, indicators and practical
+        learning in one workspace.
+      </p>
+
+      <div class="footer-socials">
+        <a href="#" aria-label="X">𝕏</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <div>
+      <h2>Quick Links</h2>
+
+      <a href={base}>
+        Home
+      </a>
+
+      <a href={`${base}analytics/`}>
+        Analytics
+      </a>
+
+      <a href={`${base}journal/`}>
+        Journal
+      </a>
+
+      <a href={`${base}products/`}>
+        Indicators
+      </a>
+    </div>
+
+    <div>
+      <h2>Resources</h2>
+
+      <a href={`${base}learn/`}>
+        Courses
+      </a>
+
+      <a href={`${base}store/`}>
+        Store
+      </a>
+
+      <a href={`${base}tools/`}>
+        Tools
+      </a>
+
+      <a href={`${base}market/`}>
+        Market
+      </a>
+    </div>
+
+    <div>
+      <h2>Support</h2>
+
+      <a href={`${base}contact/`}>
+        Contact
+      </a>
+
+      <a href={`${base}member/`}>
+        Member Area
+      </a>
+
+      <a href={`${base}contact/`}>
+        Help Centre
+      </a>
+
+      <a href={`${base}legal/risk-disclosure/`}>
+        Risk Disclosure
+      </a>
+    </div>
+
+    <div>
+      <h2>Company</h2>
+
+      <a href={`${base}about/`}>
+        About Us
+      </a>
+
+      <a href={`${base}contact/`}>
+        Contact
+      </a>
+
+      <a href="#">
+        Privacy Policy
+      </a>
+
+      <a href="#">
+        Terms of Service
+      </a>
+    </div>
+
+    <div class="footer-stay">
+      <h2>Stay Connected</h2>
+
+      <p>
+        Get updates, new indicators and course releases.
+      </p>
+
+      <form onsubmit="return false">
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          aria-label="Email address"
+        />
+
+        <button
+          type="submit"
+          aria-label="Subscribe"
+        >
+          →
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="shell footer-bottom">
+    <span>
+      © {year} Trade Avata. All rights reserved.
+    </span>
+
+    <span>
+      Trade Simple.
+    </span>
+  </div>
+</footer>
+
 <style>
-.site-footer{background:#07121d;color:#fff;padding:38px 0 18px;border-top:1px solid #1e2b37}.footer-top{display:grid;grid-template-columns:1.35fr repeat(4,.85fr) 1.2fr;gap:24px}.footer-brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff;font-weight:900;font-size:12px}.footer-brand img{width:30px;height:30px}.footer-brand small{display:block;color:#6ca7ff;font-size:6px;letter-spacing:1.2px;margin-top:2px}.footer-brand-col p,.site-footer a,.footer-stay p{font-size:8px;line-height:1.6;color:#9aa7b2;text-decoration:none}.site-footer h2{font-size:9px;margin:0 0 10px}.site-footer a{display:block;margin:6px 0}.footer-socials{display:flex;gap:5px;margin-top:12px}.footer-socials a{display:grid;place-items:center;width:24px;height:24px;border:1px solid #34414d;border-radius:50%;color:#d7e0e7;font-size:8px;margin:0}.footer-stay form{display:flex;gap:5px;margin-top:10px}.footer-stay input{min-width:0;width:170px;border:1px solid #31404c;border-radius:999px;background:#111d28;color:#fff;padding:9px 11px;font-size:7px}.footer-stay button{width:31px;border:0;border-radius:50%;background:#176cff;color:#fff;font-weight:900}.footer-bottom{border-top:1px solid #25323e;margin-top:25px;padding-top:14px;display:flex;justify-content:space-between;color:#687782;font-size:7px}@media(max-width:1000px){.footer-top{grid-template-columns:1.4fr 1fr 1fr 1fr}.footer-stay{grid-column:1/-1}}@media(max-width:620px){.footer-top{grid-template-columns:1fr 1fr;gap:18px}.footer-brand-col,.footer-stay{grid-column:1/-1}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:5px}}
+  .site-footer {
+    background: #07121d;
+    color: #ffffff;
+
+    padding: 38px 0 18px;
+
+    border-top:
+      1px solid #1e2b37;
+  }
+
+  .footer-top {
+    display: grid;
+
+    grid-template-columns:
+      1.35fr
+      repeat(4, 0.85fr)
+      1.2fr;
+
+    gap: 24px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    font-weight: 900;
+    font-size: 12px;
+  }
+
+  .footer-brand img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+  }
+
+  .footer-brand small {
+    display: block;
+
+    color: #6ca7ff;
+
+    font-size: 6px;
+
+    letter-spacing: 1.2px;
+
+    margin-top: 2px;
+  }
+
+  .footer-brand-col p,
+  .site-footer a,
+  .footer-stay p {
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    color: #9aa7b2;
+
+    text-decoration: none;
+  }
+
+  .site-footer h2 {
+    color: #ffffff;
+
+    font-size: 10px;
+
+    margin: 0 0 10px;
+  }
+
+  .site-footer a {
+    display: block;
+
+    margin: 6px 0;
+  }
+
+  .site-footer a:hover {
+    color: #ffffff;
+  }
+
+  .footer-socials {
+    display: flex;
+
+    gap: 6px;
+
+    margin-top: 12px;
+  }
+
+  .footer-socials a {
+    display: grid;
+    place-items: center;
+
+    width: 26px;
+    height: 26px;
+
+    margin: 0;
+
+    border:
+      1px solid #34414d;
+
+    border-radius: 50%;
+
+    color: #d7e0e7;
+
+    font-size: 9px;
+  }
+
+  .footer-stay form {
+    display: flex;
+
+    gap: 5px;
+
+    margin-top: 10px;
+  }
+
+  .footer-stay input {
+    min-width: 0;
+
+    width: 170px;
+
+    border:
+      1px solid #31404c;
+
+    border-radius: 999px;
+
+    background: #111d28;
+
+    color: #ffffff;
+
+    padding:
+      9px 11px;
+
+    font-size: 9px;
+
+    outline: none;
+  }
+
+  .footer-stay input:focus {
+    border-color: #176cff;
+  }
+
+  .footer-stay button {
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #176cff;
+
+    color: #ffffff;
+
+    font-weight: 900;
+
+    cursor: pointer;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    border-top:
+      1px solid #25323e;
+
+    margin-top: 25px;
+
+    padding-top: 14px;
+
+    color: #687782;
+
+    font-size: 8px;
+  }
+
+  @media (max-width: 1000px) {
+    .footer-top {
+      grid-template-columns:
+        1.4fr
+        1fr
+        1fr
+        1fr;
+    }
+
+    .footer-stay {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .footer-top {
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 18px;
+    }
+
+    .footer-brand-col,
+    .footer-stay {
+      grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+      display: block;
+    }
+
+    .footer-bottom span {
+      display: block;
+
+      margin-top: 5px;
+    }
+  }
 </style>
